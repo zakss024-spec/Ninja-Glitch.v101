@@ -1,0 +1,35 @@
+<div class="ph"><div><small class="dim mono">UTILITIES</small><h2>TOOLS</h2></div><span class="chip-s warn">LOCAL</span></div>
+<p class="disclaimer">Semua alat berjalan lokal di browser.</p>
+<div class="tabs scrollx" role="tablist" aria-label="Tools"><button type="button" role="tab" data-tab="json">JSON</button><button type="button" role="tab" data-tab="enc">ENCODER</button><button type="button" role="tab" data-tab="dec">DECODER</button><button type="button" role="tab" data-tab="hash">HASH</button><button type="button" role="tab" data-tab="color">COLOR</button><button type="button" role="tab" data-tab="img">IMAGE TEST</button><button type="button" role="tab" data-tab="ls">STORAGE</button><button type="button" role="tab" data-tab="anim">ANIMATION</button></div>
+
+<section class="card" data-panel="json"><h3>JSON VIEWER</h3>
+  <textarea class="input ta" id="tlJsonIn" rows="5" placeholder='{"hello":"world"}' spellcheck="false" autocapitalize="none"></textarea>
+  <div class="sim-row"><button class="btn sm" type="button" id="tlJsonFmt">FORMAT</button><button class="btn ghost sm" type="button" id="tlJsonMin">MINIFY</button><button class="btn ghost sm" type="button" id="tlJsonSample">SAMPLE</button><button class="btn ghost sm" type="button" id="tlJsonClear">CLEAR</button></div>
+  <p class="mono small" id="tlJsonMeta"></p><pre class="pre json" id="tlJsonOut" aria-live="polite"></pre></section>
+<section class="card" data-panel="enc" hidden><h3>TEXT ENCODER</h3>
+  <label class="field"><span>MODE</span><select class="input" id="tlEncMode"></select></label>
+  <textarea class="input ta" id="tlEncIn" rows="3" placeholder="teks biasa" autocapitalize="none"></textarea>
+  <textarea class="input ta out" id="tlEncOut" rows="3" readonly placeholder="hasil encode"></textarea>
+  <p class="mono small" id="tlEncMsg"></p><div class="sim-row"><button class="btn sm" type="button" id="tlEncRun">ENCODE</button><button class="btn ghost sm" type="button" id="tlEncCopy">COPY</button></div></section>
+<section class="card" data-panel="dec" hidden><h3>TEXT DECODER</h3>
+  <label class="field"><span>MODE</span><select class="input" id="tlDecMode"></select></label>
+  <textarea class="input ta" id="tlDecIn" rows="3" placeholder="teks ter-encode" autocapitalize="none"></textarea>
+  <textarea class="input ta out" id="tlDecOut" rows="3" readonly placeholder="hasil decode"></textarea>
+  <p class="mono small" id="tlDecMsg"></p><div class="sim-row"><button class="btn sm" type="button" id="tlDecRun">DECODE</button><button class="btn ghost sm" type="button" id="tlDecCopy">COPY</button></div></section>
+<section class="card" data-panel="hash" hidden><h3>HASH DEMO</h3>
+  <p class="disclaimer">Jangan mengetik password asli. Hash dihitung lokal.</p>
+  <textarea class="input ta" id="tlHashIn" rows="3" placeholder="ketik teks demo" autocapitalize="none">NINJA GLITCH</textarea>
+  <ul class="hashes" id="tlHashOut"></ul></section>
+<section class="card" data-panel="color" hidden><h3>COLOR TEST</h3>
+  <div class="swatches" id="tlPal"></div>
+  <h4 class="sub-h">CONTRAST CHECK</h4>
+  <div class="pick-row"><label>FG <input type="color" id="tlFg" value="#ece9ff"></label><label>BG <input type="color" id="tlBg" value="#05030c"></label></div>
+  <div class="con-demo" id="tlCon">Sample text NINJA GLITCH</div><p class="mono small" id="tlConV"></p></section>
+<section class="card" data-panel="img" hidden><h3>IMAGE TEST <span class="badge" id="tlImgSum">-</span></h3>
+  <div id="tlImgOut"></div><button class="btn block" type="button" id="tlImgReload">RELOAD ASSETS</button></section>
+<section class="card" data-panel="ls" hidden><h3>LOCAL STORAGE VIEWER <span class="badge p" id="tlLsTotal">-</span></h3>
+  <p class="disclaimer">Password tidak pernah disimpan. Ketuk key untuk melihat isinya.</p>
+  <ul class="ls-list" id="tlLsOut"></ul><div class="sim-row"><button class="btn ghost sm" type="button" id="tlLsRefresh">REFRESH</button><button class="btn ghost sm" type="button" id="tlLsExport">COPY ALL (JSON)</button></div></section>
+<section class="card" data-panel="anim" hidden><h3>ANIMATION TEST <span class="badge" id="tlFps">-- FPS</span></h3>
+  <div class="anim-demo" id="tlAnim"><img class="bh-img" data-asset="blackhole" src="./assets/images/blackhole.webp" alt="" width="120" height="120" decoding="async"><span class="glitch ad-txt" data-text="GLITCH">GLITCH</span><i class="ad-orb"></i><i class="ad-bar"></i></div>
+  <button class="btn block" type="button" id="tlAnimBtn">START ANIMATION TEST</button></section>

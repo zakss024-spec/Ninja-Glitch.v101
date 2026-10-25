@@ -1,0 +1,22 @@
+<div class="ph"><div><small class="dim mono">LAB</small><h2>NETWORK LAB</h2></div><span class="chip-s warn">SIMULATION</span></div>
+<p class="disclaimer">Perangkat, port, ping, dan traffic adalah DATA FIKTIF. Tidak ada scan jaringan nyata.</p>
+<div class="tabs" role="tablist"><button type="button" role="tab" data-tab="scan">DEVICES</button><button type="button" role="tab" data-tab="map">PORT MAP</button><button type="button" role="tab" data-tab="ping">PING</button><button type="button" role="tab" data-tab="traffic">TRAFFIC</button></div>
+<section class="card" data-panel="scan"><h3>DEVICE SCANNER</h3><div id="nwRes-scan"></div></section>
+<section class="card" data-panel="map" hidden><h3>PORT MAP</h3><div id="nwRes-map"></div></section>
+<section class="card" data-panel="ping" hidden><h3>PING SIMULATOR</h3>
+  <div id="nwPingBox"><label class="field"><span>TARGET (FICTIONAL)</span><select class="input" id="nwPingTarget"></select></label><label class="field"><span>PACKETS</span><select class="input" id="nwPingCount"></select></label></div>
+  <div id="nwRes-ping"><p class="dim mono">Hasil ping simulasi tampil di sini.</p></div></section>
+<section class="card" data-panel="traffic" hidden><h3>TRAFFIC MONITOR <span class="badge p">SIMULATED</span></h3>
+  <canvas id="nwCanvas" class="chart-cv" width="320" height="130" aria-label="Traffic chart"></canvas>
+  <div class="traffic-leg mono"><span class="cy">&#9632; RX <b id="nwRx">0 KB/s</b></span><span class="ok">&#9632; TX <b id="nwTx">0 KB/s</b></span></div></section>
+<div id="nwSimBox">
+<section class="card simbox" aria-label="Simulation">
+  <div class="sim-head"><span class="sim-lab mono dim">STATUS</span><span class="sim-st dim" data-sim="status">READY</span><span class="pct" data-sim="pct">0%</span></div>
+  <div class="pbar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i data-sim="bar"></i></div>
+  <p class="busy" data-sim="busy" hidden></p>
+  <div class="sim-row"><button class="btn" type="button" data-sim="start">RUN SIMULATION</button><button class="btn ghost" type="button" data-sim="stop" disabled>STOP</button><button class="btn ghost" type="button" data-sim="reset">RESET</button></div>
+  <div class="console" data-sim="console" role="log" aria-live="polite" aria-label="Console"></div>
+  <h4 class="sub-h">ACTIVITY LOG</h4>
+  <ul class="feed" data-sim="log"></ul>
+</section>
+</div>

@@ -1,0 +1,20 @@
+<div class="ph"><div><small class="dim mono">SIMULATOR</small><h2>BUG LAB</h2></div><span class="chip-s warn">SIMULATION</span></div>
+<p class="disclaimer">Simulasi visual lokal pada target virtual. Tidak ada payload, pengiriman, atau aksi terhadap akun/perangkat nyata.</p>
+<div class="card sel-card" data-sender-sel aria-label="Active sender"></div>
+<section class="card">
+  <h3>BUG SIMULATOR</h3>
+  <label class="field"><span>BUG TYPE</span><select class="input" id="bugType"></select></label>
+  <label class="field" id="bugCustomWrap" hidden><span>CUSTOM BUG NAME</span><input class="input" id="bugCustom" type="text" maxlength="24" placeholder="my custom bug" autocomplete="off"></label>
+  <label class="field"><span>TARGET SIMULATOR</span><select class="input" id="bugTarget"></select></label>
+  <div class="field"><span>INTENSITY</span><div class="seg" data-seg="lvl" role="group" aria-label="Intensity"><button type="button" class="chip" data-v="1">LOW</button><button type="button" class="chip" data-v="2">MID</button><button type="button" class="chip" data-v="3">HIGH</button></div></div>
+</section>
+<section class="card simbox" aria-label="Simulation">
+  <div class="gl-stage" data-sim="stage" data-fx="rgb" aria-hidden="true"><div class="gl-art"><img class="gl-ico" data-asset="ninja" src="./assets/images/ninja.webp" alt="" width="64" height="64" decoding="async"><div class="gl-txt">NINJA GLITCH</div></div><div class="gl-layer a"><img data-asset="ninja" src="./assets/images/ninja.webp" alt="" width="64" height="64" decoding="async"><div class="gl-txt">NINJA GLITCH</div></div><div class="gl-layer b"><img data-asset="ninja" src="./assets/images/ninja.webp" alt="" width="64" height="64" decoding="async"><div class="gl-txt">NINJA GLITCH</div></div></div>
+  <div class="sim-head"><span class="sim-lab mono dim">STATUS</span><span class="sim-st dim" data-sim="status">READY</span><span class="pct" data-sim="pct">0%</span></div>
+  <div class="pbar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i data-sim="bar"></i></div>
+  <p class="busy" data-sim="busy" hidden></p>
+  <div class="sim-row"><button class="btn" type="button" data-sim="start">START BUG</button><button class="btn ghost" type="button" data-sim="stop" disabled>STOP</button><button class="btn ghost" type="button" data-sim="reset">RESET</button></div>
+  <div class="console" data-sim="console" role="log" aria-live="polite" aria-label="Console"></div>
+  <h4 class="sub-h">ACTIVITY LOG</h4>
+  <ul class="feed" data-sim="log"></ul>
+</section>

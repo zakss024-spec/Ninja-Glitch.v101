@@ -1,0 +1,75 @@
+<section class="hero-card holo">
+  <div class="hero-bh"><img class="bh-img" data-asset="blackhole" src="./assets/images/blackhole.webp" alt="" width="120" height="120" decoding="async"><img class="hero-ninja" data-asset="ninja" src="./assets/images/ninja.webp" alt="" width="46" height="46" decoding="async"></div>
+  <div class="hero-txt">
+    <small class="mono dim">WELCOME BACK, NINJA</small>
+    <h2><span class="glitch" data-text="CYBER OPERATIONS">CYBER OPERATIONS</span></h2>
+    <div class="status-row"><span class="chip-s ok"><i class="dot"></i>SYSTEM ONLINE</span><span class="chip-s warn"><i class="dot w"></i>LOCAL SIMULATION</span><span class="chip-s cy"><i class="dot c"></i>ENGINE READY</span></div>
+  </div>
+</section>
+
+<div class="stat-grid" id="hmTiles" aria-label="Statistics"></div>
+
+<section class="card">
+  <h3>QUICK ACTIONS <span class="qa-mini"><button class="btn ghost sm" type="button" id="hmNewSender">+ NEW SENDER</button><button class="btn ghost sm" type="button" id="hmNewGroup">+ NEW GROUP</button></span></h3>
+  <div class="qa-grid"><button class="qa" type="button" data-route="bug"><i>BG</i><span>BUG</span></button><button class="qa" type="button" data-route="bug-group"><i>BH</i><span>BUG GROUP</span></button><button class="qa" type="button" data-route="ban-group"><i>BN</i><span>BAN GROUP</span></button><button class="qa" type="button" data-route="hack"><i>HK</i><span>HACK LAB</span></button><button class="qa" type="button" data-route="osint"><i>OS</i><span>OSINT LAB</span></button><button class="qa" type="button" data-route="report"><i>RP</i><span>REPORT LAB</span></button><button class="qa" type="button" data-route="sender"><i>SN</i><span>MANAGE SENDER</span></button><button class="qa" type="button" data-route="group"><i>GL</i><span>GROUP LAB</span></button><button class="qa" type="button" data-route="network"><i>NW</i><span>NETWORK LAB</span></button><button class="qa" type="button" data-route="terminal"><i>&gt;_</i><span>TERMINAL</span></button></div>
+</section>
+
+<div class="grid two">
+  <section class="card sim-card" id="hmSim">
+    <h3>SIMULATION STATUS <span class="badge p">LOCAL</span></h3>
+    <b class="sim-title" id="hmSimTitle">IDLE</b>
+    <div class="sim-head"><span class="sim-st dim" id="hmSimSt">READY</span><span class="pct" id="hmSimPct">0%</span></div>
+    <div class="pbar"><i id="hmSimBar"></i></div>
+    <div class="sim-row"><button class="btn danger sm" type="button" id="hmSimStop" hidden>STOP</button><button class="btn ghost sm" type="button" data-route="bug">OPEN BUG LAB</button></div>
+  </section>
+  <section class="card">
+    <h3>SENDER STATUS <button class="link-btn" type="button" data-route="sender">MANAGE</button></h3>
+    <div id="hmSender"></div>
+  </section>
+</div>
+
+<section class="card">
+  <h3>SYSTEM MONITOR <span class="badge p">SIMULATED</span></h3>
+  <div class="meter"><div class="row"><span>CPU CORE</span><b id="hmCpuV">0%</b></div><div class="bar"><i id="hmCpu"></i></div></div>
+  <div class="meter p"><div class="row"><span>MEMORY</span><b id="hmMemV">0%</b></div><div class="bar"><i id="hmMem"></i></div></div>
+  <div class="meter g"><div class="row"><span>LOCAL TRAFFIC</span><b id="hmNetV">0%</b></div><div class="bar"><i id="hmNet"></i></div></div>
+  <ul class="kv mini"><li><span>Uptime</span><b id="hmUp">00:00:00</b></li><li><span>Frame rate (real)</span><b id="hmFps" class="cy">-- FPS</b></li><li><span>Local sessions</span><b id="hmSess">1</b></li><li><span>Logins on device</span><b id="hmLogins">1</b></li><li><span>Network</span><b id="hmOnline">-</b></li></ul>
+</section>
+
+<div class="grid two">
+  <section class="card">
+    <h3>SECURITY STATUS <span class="badge">LOCAL SCORE</span></h3>
+    <div class="gauge-row"><div class="gauge" style="--v:98"><b>98%</b></div><ul class="kv mini"><li><span>Session</span><b class="ok">VERIFIED</b></li><li><span>Biometric (sim)</span><b class="ok">GRANTED</b></li><li><span>External requests</span><b class="ok">NONE</b></li></ul></div>
+    <button class="btn ghost sm block" type="button" data-route="security">OPEN SECURITY CENTER</button>
+  </section>
+  <section class="card">
+    <h3>ENGINE STATUS <span class="badge">LIVE</span></h3>
+    <ul class="kv" id="hmEngine"></ul>
+  </section>
+</div>
+
+<section class="card">
+  <h3>ACTIVE MODULES <span class="badge">10 ONLINE</span></h3>
+  <div class="chips-wrap" id="hmMods"></div>
+</section>
+
+<div class="grid two">
+  <section class="card">
+    <h3>RECENT ACTIVITY <button class="link-btn" type="button" data-route="activity">VIEW ALL</button></h3>
+    <ul class="feed" id="hmRecent"></ul>
+  </section>
+  <section class="card">
+    <h3>NOTIFICATIONS <span class="nbadge inline" id="hmNoteBadge" hidden>0</span> <button class="link-btn" type="button" data-action="notifs">OPEN</button></h3>
+    <ul class="nmini" id="hmNotes"></ul>
+  </section>
+</div>
+
+<section class="card">
+  <h3>DEVELOPER</h3>
+  <div class="devs">
+    <div class="dev"><div class="ring sm"><img data-asset="ninja" src="./assets/images/ninja.webp" alt="" width="32" height="32" decoding="async"></div><small>DEVELOPER</small><b>ZAKSS</b></div>
+    <div class="dev"><div class="ring sm"><img data-asset="ninja" src="./assets/images/ninja.webp" alt="" width="32" height="32" decoding="async"></div><small>DEVELOPER</small><b>DAKA</b></div>
+    <div class="dev"><div class="ring sm"><img data-asset="ninja" src="./assets/images/ninja.webp" alt="" width="32" height="32" decoding="async"></div><small>DEVELOPER</small><b>NATHAN</b></div>
+  </div>
+</section>
+<p class="foot">NINJA GLITCH v2.0.0 - LOCAL SIMULATION ONLY</p>

@@ -1,0 +1,27 @@
+<div class="ph"><div><small class="dim mono">LAB</small><h2>HACK LAB</h2></div><span class="chip-s warn">SIMULATION</span></div>
+<p class="disclaimer">Semua hasil FIKTIF & dibuat di browser. Hanya target fiktif; tidak ada request jaringan ke target.</p>
+<div class="tabs" role="tablist" aria-label="Modul Hack Lab">
+  <button type="button" role="tab" data-tab="target">TARGET</button><button type="button" role="tab" data-tab="ports">PORT SCAN</button><button type="button" role="tab" data-tab="vuln">VULN SCAN</button><button type="button" role="tab" data-tab="pass">PASSWORD AUDIT</button>
+</div>
+<section class="card" id="hkTargetBox">
+  <h3>TARGET SIMULATOR</h3>
+  <label class="field"><span>FICTIONAL TARGET</span><input class="input" id="hkTarget" type="text" list="hkList" value="target.local" maxlength="40" autocomplete="off" autocapitalize="none" spellcheck="false"></label>
+  <datalist id="hkList"></datalist>
+  <div class="chips-wrap"><button class="chip" type="button" data-preset="target.local">target.local</button><button class="chip" type="button" data-preset="demo.local">demo.local</button><button class="chip" type="button" data-preset="192.0.2.10">192.0.2.10</button></div>
+</section>
+<section class="card" data-panel="target"><h3>TARGET PROFILE</h3><div id="hkRes-target"><p class="dim mono">Tekan RUN SIMULATION untuk membuat profil target fiktif.</p></div></section>
+<section class="card" data-panel="ports" hidden><h3>PORT SCANNER SIMULATOR</h3><div id="hkRes-ports"><p class="dim mono">Contoh hasil: PORT 22 OPEN SSH - PORT 80 OPEN HTTP - PORT 443 OPEN HTTPS</p></div></section>
+<section class="card" data-panel="vuln" hidden><h3>VULNERABILITY SCANNER</h3><div id="hkRes-vuln"><p class="dim mono">Temuan simulasi akan muncul di sini.</p></div></section>
+<section class="card" data-panel="pass" hidden><h3>PASSWORD AUDIT DEMO</h3>
+  <label class="field"><span>DEMO PASSWORD (TIDAK DISIMPAN/DIKIRIM)</span><input class="input" id="hkPass" type="password" maxlength="64" autocomplete="new-password" autocapitalize="none" spellcheck="false" placeholder="ketik password demo"></label>
+  <div id="hkRes-pass"><p class="dim mono">Dievaluasi lokal; kolom dikosongkan setelah selesai.</p></div></section>
+<section class="card simbox" aria-label="Simulation">
+  <div class="sim-head"><span class="sim-lab mono dim">STATUS</span><span class="sim-st dim" data-sim="status">READY</span><span class="pct" data-sim="pct">0%</span></div>
+  <div class="pbar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i data-sim="bar"></i></div>
+  <p class="busy" data-sim="busy" hidden></p>
+  <div class="sim-row"><button class="btn" type="button" data-sim="start">RUN SIMULATION</button><button class="btn ghost" type="button" data-sim="stop" disabled>STOP</button><button class="btn ghost" type="button" data-sim="reset">RESET</button></div>
+  <div class="console" data-sim="console" role="log" aria-live="polite" aria-label="Console"></div>
+  <h4 class="sub-h">ACTIVITY LOG</h4>
+  <ul class="feed" data-sim="log"></ul>
+</section>
+<div class="grid two"><button class="card link-card" type="button" data-route="exploit"><b>EXPLOIT LAB</b><small class="dim mono">Sandbox challenge fiktif</small></button><button class="card link-card" type="button" data-route="terminal"><b>TERMINAL</b><small class="dim mono">Shell simulasi lokal</small></button></div>

@@ -1,0 +1,11 @@
+<div class="ph"><div><small class="dim mono">LAB</small><h2>GROUP LAB</h2></div><span class="chip-s warn">LOCAL DATA</span></div>
+<p class="disclaimer">Group & member FIKTIF, tersimpan lokal. Tidak terhubung ke grup mana pun.</p>
+<div class="ph-act"><button class="btn" type="button" id="grpAdd">+ CREATE GROUP</button></div>
+<div class="list-col" id="grpList"></div>
+<section class="card" id="grpDetail" hidden>
+  <h3><span id="gdName">GROUP</span> <span class="badge p">DETAIL</span></h3>
+  <div class="tabs" role="tablist"><button type="button" role="tab" data-tab="mem">MEMBERS</button><button type="button" role="tab" data-tab="status">STATUS</button><button type="button" role="tab" data-tab="act">ACTIVITY</button></div>
+  <div data-panel="mem"><div class="sim-row"><button class="btn sm" type="button" id="gdAdd">+ ADD MEMBER</button><button class="btn ghost sm" type="button" id="gdEvent">SIMULATE EVENT</button></div><div class="mems" id="gdMembers"></div></div>
+  <div data-panel="status" hidden id="gdStatus"></div>
+  <div data-panel="act" hidden><ul class="feed" id="gdLog"></ul></div>
+</section>
