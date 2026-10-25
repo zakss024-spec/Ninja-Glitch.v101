@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <meta name="theme-color" content="#05030c">
+  <meta name="description" content="NINJA GLITCH - Cyber Operations Center (simulasi lokal).">
+  <title>NINJA GLITCH - Dashboard</title>
+  <link rel="icon" href="./assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./assets/icons/icon-192.png">
+  <link rel="preload" as="image" href="./assets/images/blackhole.webp" type="image/webp">
+  <link rel="preload" as="image" href="./assets/images/ninja.webp" type="image/webp">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./responsive.css">
+  <script src="./storage.js"></script>
+  <script>
+    /* Guard: tanpa session lokal -> login (login.html tidak mengarahkan balik tanpa session => tidak ada loop) */
+    if (window.NGStorage && NGStorage.get('session', '') !== '1') { location.replace('login.html'); }
+  </script>
+</head>
+<body data-page="dashboard">
+  <noscript>JavaScript diperlukan untuk menjalankan NINJA GLITCH.</noscript>
+
+  <div class="bg" aria-hidden="true"><div class="bg-glow"></div><div class="bg-grid"></div></div>
+  <canvas id="fx" class="fx" aria-hidden="true"></canvas>
+  <div class="scan" aria-hidden="true"></div>
+
+  <div class="app">
+    <header class="topbar">
+      <button class="iconbtn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="brand">
+        <b>NINJA GLITCH</b>
+        <small>CYBER OPERATIONS CENTER</small>
+      </div>
+      <button class="iconbtn bell" id="bellBtn" type="button" aria-label="Notifikasi">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg>
+        <span class="nbadge" id="bellBadge" hidden>0</span>
+      </button>
+      <button class="iconbtn" id="logoutTop" type="button" aria-label="Logout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v9M6.3 6.8a8 8 0 1 0 11.4 0"/></svg>
+      </button>
+    </header>
+
+    <main id="views" aria-live="polite"></main>
+  </div>
+
+  <!-- Bottom navigation (5 tab) -->
+  <nav class="bnav" aria-label="Navigasi utama">
+    <button class="nav-btn" type="button" data-route="home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>HOME</span>
+    </button>
+    <button class="nav-btn" type="button" data-route="bug">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9a4 4 0 0 1 8 0v6a4 4 0 0 1-8 0z"/><path d="M12 5V3M5 8l3 1.5M19 8l-3 1.5M3 13h5M16 13h5M5 19l3-2M19 19l-3-2"/></svg><span>BUG</span>
+    </button>
+    <button class="nav-btn" type="button" data-route="group">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.9.3 5 2.6 5 5.8"/></svg><span>GROUP</span>
+    </button>
+    <button class="nav-btn" type="button" data-route="tools">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 17.7 6.3 21l6.3-6.3a4 4 0 0 0 5.1-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg><span>TOOLS</span>
+    </button>
+    <button class="nav-btn" type="button" data-route="settings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/></svg><span>SETTINGS</span>
+    </button>
+  </nav>
+
+  <!-- Drawer menu -->
+  <div class="drawer-bg" id="drawerBackdrop"></div>
+  <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Menu utama">
+    <div class="dr-head">
+      <img class="dr-logo" data-asset="ninja" src="./assets/images/ninja.webp" alt="" width="40" height="40" decoding="async">
+      <div><b>NINJA GLITCH</b><small>CYBER OPERATIONS CENTER</small></div>
+      <button class="iconbtn" id="drawerClose" type="button" aria-label="Tutup menu">&times;</button>
+    </div>
+    <div class="dr-scroll">
+      <button class="dr-item" type="button" data-route="home"><i>HM</i>DASHBOARD</button>
+      <div class="dr-sec">LABS</div>
+      <button class="dr-item" type="button" data-route="hack"><i>HK</i>HACK LAB</button>
+      <button class="dr-item" type="button" data-route="osint"><i>OS</i>OSINT LAB</button>
+      <button class="dr-item" type="button" data-route="report"><i>RP</i>REPORT LAB</button>
+      <button class="dr-item" type="button" data-route="network"><i>NW</i>NETWORK LAB</button>
+      <button class="dr-item" type="button" data-route="exploit"><i>EX</i>EXPLOIT LAB</button>
+      <div class="dr-sec">SIMULATORS</div>
+      <button class="dr-item" type="button" data-route="bug"><i>BG</i>BUG</button>
+      <button class="dr-item" type="button" data-route="bug-group"><i>BH</i>BUG GROUP</button>
+      <button class="dr-item" type="button" data-route="ban-group"><i>BN</i>BAN GROUP</button>
+      <div class="dr-sec">MANAGE</div>
+      <button class="dr-item" type="button" data-route="group"><i>GL</i>GROUP LAB</button>
+      <button class="dr-item" type="button" data-route="sender"><i>SN</i>MANAGE SENDER</button>
+      <button class="dr-item" type="button" data-route="terminal"><i>&gt;_</i>TERMINAL</button>
+      <div class="dr-sec">SYSTEM</div>
+      <button class="dr-item" type="button" data-route="security"><i>SC</i>SECURITY</button>
+      <button class="dr-item" type="button" data-route="activity"><i>AC</i>ACTIVITY</button>
+      <button class="dr-item" type="button" data-route="statistics"><i>ST</i>STATISTICS</button>
+      <button class="dr-item" type="button" data-action="notifs"><i>NT</i>NOTIFICATIONS<em class="dr-badge" id="drawerNotifBadge" hidden>0</em></button>
+      <button class="dr-item" type="button" data-route="tools"><i>TL</i>TOOLS</button>
+      <button class="dr-item" type="button" data-route="settings"><i>SE</i>SETTINGS</button>
+    </div>
+    <button class="btn danger block dr-out" id="drawerLogout" type="button">LOGOUT</button>
+  </aside>
+
+  <!-- Modal -->
+  <div class="modal-wrap" id="modal" hidden aria-hidden="true">
+    <div class="modal-bg" data-close></div>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-h"><h3 id="modalTitle"></h3><button class="iconbtn" type="button" data-close aria-label="Tutup">&times;</button></div>
+      <div class="modal-b" id="modalBody"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="./animation.js"></script>
+  <script src="./image-loader.js"></script>
+  <script src="./simulator.js"></script>
+  <script src="./navigation.js"></script>
+  <script src="./notifications.js"></script>
+  <script src="./sender.js"></script>
+  <script src="./group.js"></script>
+  <script src="./bug.js"></script>
+  <script src="./bug-group.js"></script>
+  <script src="./ban-group.js"></script>
+  <script src="./report.js"></script>
+  <script src="./hack.js"></script>
+  <script src="./osint.js"></script>
+  <script src="./network.js"></script>
+  <script src="./terminal.js"></script>
+  <script src="./security.js"></script>
+  <script src="./activity.js"></script>
+  <script src="./statistics.js"></script>
+  <script src="./tools.js"></script>
+  <script src="./settings.js"></script>
+  <script src="./home.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

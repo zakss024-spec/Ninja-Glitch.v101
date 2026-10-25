@@ -1,0 +1,64 @@
+/* NINJA GLITCH - responsive.css
+ * Android kecil, portrait, landscape, tablet/desktop. Tidak ada horizontal overflow. */
+
+/* Layar sangat kecil (<= 360px) */
+@media (max-width: 360px) {
+  body { font-size: 14px; }
+  .stage { padding-left: 14px; padding-right: 14px; }
+  .title { letter-spacing: .1em; }
+  .ring { width: 96px; height: 96px; }
+  .fp-steps span { padding: 5px 8px; font-size: 10px; }
+  .devs { gap: 6px; }
+  .dev b { font-size: 12px; letter-spacing: .06em; }
+  .dev small { letter-spacing: .12em; }
+  .nav-btn { font-size: 9.5px; letter-spacing: .08em; }
+  .console { height: 150px; }
+}
+
+/* Layar pendek (HP kecil / keyboard terbuka) */
+@media (max-height: 640px) and (orientation: portrait) {
+  .stage { padding-top: calc(var(--safe-t) + 56px); }
+  .ring { width: 92px; height: 92px; }
+  .login-card { margin-top: 14px; }
+}
+
+/* Landscape HP */
+@media (max-height: 520px) and (orientation: landscape) {
+  .stage { padding-top: calc(var(--safe-t) + 52px); padding-bottom: 16px; }
+  .stage > .inner { max-width: 560px; }
+  .ring { width: 76px; height: 76px; }
+  .ring.sm { width: 40px; height: 40px; }
+  .bh { --bh: 150px !important; }
+  .intro-title, .ldg-title { margin-top: 16px; }
+  .title { font-size: 20px; }
+  .login-card { margin-top: 12px; padding: 12px; }
+  .input { height: 44px; }
+  .fp-btn { width: 130px; height: 130px; min-width: 130px; min-height: 130px; margin: 12px 0 8px; }
+  .fp-pct { font-size: 24px; }
+  .app { padding-bottom: calc(var(--safe-b) + 84px); }
+  .bnav { bottom: calc(var(--safe-b) + 6px); padding: 4px; border-radius: 20px; }
+  .nav-btn { min-height: 46px; flex-direction: row; gap: 8px; font-size: 11px; }
+  .nav-btn svg { width: 20px; height: 20px; }
+  .nav-btn.active::after { display: none; }
+  .gl-stage { height: 130px; }
+  .console { height: 120px; }
+  .toast { bottom: calc(var(--safe-b) + 66px); }
+}
+
+/* Tablet / desktop: tampil seperti bingkai HP di tengah */
+@media (min-width: 700px) {
+  .app { max-width: 600px; }
+  .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stage > .inner { max-width: 440px; }
+}
+
+@media (min-width: 1000px) {
+  .bg-glow { background:
+    radial-gradient(70% 55% at 50% -8%, rgba(124,58,237,.55), transparent 62%),
+    radial-gradient(60% 40% at 50% 112%, rgba(34,211,238,.28), transparent 65%); }
+}
+
+/* v2 - tambahan */
+@media (min-width: 520px) { .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); } .modal-wrap { align-items: center; } .qa-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 380px) { .stat b { font-size: 18px; } .hero-bh { width: 74px; height: 74px; } .hero-txt h2 { font-size: 15px; } .qa span { font-size: 10px; } .qa i { width: 30px; height: 30px; } .hb { grid-template-columns: 64px 1fr 24px; } .tm-form label { display: none; } .dl4 dd { font-size: 12px; } .ph h2 { font-size: 19px; } }
+@media (max-height: 520px) and (orientation: landscape) { .modal-wrap { align-items: center; padding: 6px; } .modal { max-width: 540px; } .drawer { width: min(60vw, 320px); } .tm-out { height: 38vh; } .hero-card { padding: 10px; } .stat-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); } .qa-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); } }

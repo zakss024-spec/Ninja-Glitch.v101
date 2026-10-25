@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <meta name="theme-color" content="#05030c">
+  <meta name="description" content="NINJA GLITCH - simulasi UI cyber lokal (tanpa backend).">
+  <title>NINJA GLITCH</title>
+  <link rel="icon" href="./assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./assets/icons/icon-192.png">
+  <link rel="preload" as="image" href="./assets/images/ninja.webp" type="image/webp">
+  <link rel="preload" as="image" href="./assets/images/blackhole.webp" type="image/webp">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./responsive.css">
+  <script src="./storage.js"></script>
+</head>
+<body data-page="intro">
+  <noscript>JavaScript diperlukan untuk menjalankan NINJA GLITCH.</noscript>
+
+  <div class="bg" aria-hidden="true"><div class="bg-glow"></div><div class="bg-grid"></div></div>
+  <canvas id="fx" class="fx" aria-hidden="true"></canvas>
+  <div class="scan" aria-hidden="true"></div>
+
+  <button id="skipIntro" class="skip" type="button">SKIP INTRO</button>
+
+  <main class="stage active" id="stage-intro">
+    <div class="inner">
+      <div class="bh pulse" style="--bh: min(68vw, 280px)" aria-hidden="true">
+        <div class="bh-ring"></div>
+        <div class="bh-ring r2"></div>
+        <img class="bh-img" data-asset="blackhole" src="./assets/images/blackhole.webp" alt="" width="300" height="300" decoding="async">
+        <div class="bh-swirl"></div>
+        <div class="bh-core"></div>
+        <div class="bh-center">
+          <img data-asset="ninja" src="./assets/images/ninja.webp" alt="" width="84" height="84" decoding="async" style="width:30%;height:auto;position:relative;z-index:4;filter:drop-shadow(0 0 12px rgba(34,211,238,.9))">
+        </div>
+      </div>
+
+      <h1 class="title intro-title"><span class="glitch glitch-shift" data-text="NINJA GLITCH">NINJA GLITCH</span></h1>
+      <p class="sub">CYBER SIMULATION ENGINE</p>
+
+      <div class="boot-lines" id="bootLines" aria-live="polite"></div>
+
+      <div class="prow"><span class="status" id="introStatus" style="text-align:left">INITIALIZING</span><span class="pct" id="introPct">0%</span></div>
+      <div class="pbar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="introBar"></i></div>
+    </div>
+  </main>
+
+  <script src="./animation.js"></script>
+  <script src="./image-loader.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
